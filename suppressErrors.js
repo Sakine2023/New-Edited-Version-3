@@ -24,13 +24,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// جلوگیری از نمایش پیام خطا در تلگرام
+// اطمینان از عدم نمایش خطاها در تلگرام
 function suppressTelegramErrors() {
-    if (window.TelegramWebviewProxy) {
-        window.TelegramWebviewProxy.setCustomEventHandler(function(eventType, eventData) {
+    if (window.TelegramWebviewProxy && typeof window.TelegramWebviewProxy.postEvent === 'function') {
+        window.TelegramWebviewProxy.postEvent('customErrorHandler', function(eventType, eventData) {
             if (eventType === 'error') {
                 console.log("Error in Telegram WebView: ", eventData);
-                return true;
+                return true; // جلوگیری از نمایش پیام خطا
             }
         });
     }
