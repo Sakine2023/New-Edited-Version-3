@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | Telegram Game</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <script src="TemplateData/UnityProgress.js"></script>
+    <script src="checkWebGL.js"></script> <!-- اضافه کردن این خط -->
+    <script src="Build/UnityLoader.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #000;
+        }
+        .webgl-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100vh;
+        }
+        #unityContainer {
+            width: 100%;
+            height: 100%;
+            max-width: 100vw;
+            max-height: 100vh;
+        }
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .webgl-logo,
+        .fullscreen,
+        .title {
+            margin: 5px;
+        }
+        .webgl-logo {
+            background: url('TemplateData/webgl-logo.png') no-repeat;
+            width: 48px;
+            height: 48px;
+        }
+        .fullscreen {
+            background: url('TemplateData/fullscreen.png') no-repeat;
+            width: 48px;
+            height: 48px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="webgl-content">
+        <div id="unityContainer"></div>
+    </div>
+</body>
+</html>
