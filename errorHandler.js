@@ -1,10 +1,14 @@
-// مدیریت خطاهای جاوا اسکریپت و جلوگیری از نمایش آنها
 window.onerror = function(message, source, lineno, colno, error) {
     console.log("JavaScript error: ", message, " at ", source, ":", lineno, ":", colno);
     return true; // از نمایش پیام خطا جلوگیری می‌کند
 };
 
 window.addEventListener('error', function(event) {
+    event.preventDefault(); // از نمایش پیام خطا جلوگیری می‌کند
+});
+
+window.addEventListener('unhandledrejection', function(event) {
+    console.log("Unhandled promise rejection: ", event.reason);
     event.preventDefault(); // از نمایش پیام خطا جلوگیری می‌کند
 });
 
