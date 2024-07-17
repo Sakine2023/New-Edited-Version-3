@@ -24,9 +24,12 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// بارگذاری مجدد مدیریت خطاهای تلگرام در زمان بارگذاری مجدد صفحه
-window.addEventListener('load', function() {
-    suppressTelegramErrors();
-    setTimeout(suppressTelegramErrors, 1000); // تلاش مجدد پس از 1 ثانیه
-    setTimeout(suppressTelegramErrors, 5000); // تلاش مجدد پس از 5 ثانیه
-});
+// جلوگیری از نمایش پیام خطا در تلگرام
+if (window.TelegramWebviewProxy) {
+    window.TelegramWebviewProxy.setCustomEventHandler(function(eventType, eventData) {
+        if (eventType === 'error') {
+            console.log("Error in Telegram WebView: ", eventData);
+            return true; // جلوگیری از نمایش پیام خطا
+        }
+    });
+}
